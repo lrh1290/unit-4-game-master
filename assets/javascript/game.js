@@ -8,29 +8,29 @@ var frodo = {
     name: 'Frodo',
     id: 'frodo',
     health: 150,
-    ap: 20,
-    cp: 25
+    ap: 15,
+    cp: 15
 };
 var merry = {
     name: 'Merry',
     id: 'merry',
     health: 75,
-    ap: 10,
-    cp: 20
+    ap: 50,
+    cp: 50
 }
 var pippin = {
     name: 'Pippin',
     id: 'pippin',
     health: 100,
-    ap: 25,
-    cp: 30
+    ap: 20,
+    cp: 20
 };
 var sam = {
     name: 'Sam',
     id: 'sam',
-    health: 100,
-    ap: 25,
-    cp: 30
+    health: 200,
+    ap: 10,
+    cp: 10
 }
 // Choose a character
 function chooseAttacker(chosenCharacter) {
@@ -60,11 +60,19 @@ function updateHealth() {
         $("#frodo-health").text(attackerHealth);
     } else if (attacker.id == 'sam') {
         $("#sam-health").text(attackerHealth);
+    } else if (attacker.id == 'merry') {
+        $("#merry-health").text(attackerHealth);
+    } else if (attacker.id == 'pippin') {
+        $("#pippin-health").text(attackerHealth);
     };
     if (defender.id == 'frodo') {
         $("#frodo-health").text(defenderHealth);
     } else if (defender.id == 'sam') {
         $("#sam-health").text(defenderHealth);
+    } else if (defender.id == 'merry') {
+        $("#merry-health").text(defenderHealth);
+    } else if (defender.id == '[pippin]') {
+        $("#pippin-health").text(defenderHealth);
     };
 };
 function fight() {
@@ -75,29 +83,24 @@ function fight() {
             $("#frodo").hide();
         } else if (defender.id == 'sam') {
             $("#sam").hide();
+        } else if (defender.id == 'merry') {
+            $("#merry").hide();
+        } else if (defender.id == 'pippin') {
+            $("#pippin").hide();
         };
         defenderSelected = false;
     };
 };
-function intializeHealth() {
-    //find characters in html with jquery and store variable
-    var fighters = $(".fighters");
-    //loop through fighters
-    for (var i = 0; i < fighters.length; i++) {
-    //get the id 
-    var fighter = fighters[i].getAttribute("id");
-    //get hp
-    var gethp = fighter.health;
-    //display hp
-    $("#" + fighter[i] + "> .health").textContent(gethp);
-    }
-}
 $(document).ready(function () {
     $(".fighters").on("click", function () {
         if ($(this).attr("id") == "frodo") {
             var selection = frodo;
         } else if ($(this).attr("id") == "sam") {
             var selection = sam;
+        } else if ($(this).attr("id") == "merry") {
+            var selection = merry;
+        } else if ($(this).attr("id") == "pippin") {
+            var selection = pippin;
         };
         if (!attackerSelected) {
             $(this).appendTo("#your-character");

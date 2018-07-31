@@ -7,13 +7,11 @@ body {
 }
 
 .img-fluid {
-    max-height: 150px;
+    max-height: 250px;
 }
 
 
 #your-character {
-    width: 150px;
-    height: 150px;
     clear: both;
 }
 
@@ -24,15 +22,14 @@ h1 {
 .fighters {
     text-align: center;
     border: 3px solid black;
-    width: 210px;
-    height: 210px;
     margin-bottom: 20px;
-    float: left;
-    margin-left: 10px;
+    width: 100%;
+    background: black;
 }
 
 .textbox {
     text-align: center;
+    color: white;
 }
 
 
