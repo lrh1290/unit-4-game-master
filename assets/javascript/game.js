@@ -1,9 +1,14 @@
+//dom elements
 var attacker = {};
 var defender = {};
 var attackerSelected = false;
 var defenderSelected = false;
 var attackerHealth = 0;
 var defenderHealth = 0;
+var currentap = 0;
+
+
+//characters
 var frodo = {
     name: 'Frodo',
     id: 'frodo',
@@ -32,6 +37,7 @@ var sam = {
     ap: 10,
     cp: 10
 }
+
 // Choose a character
 function chooseAttacker(chosenCharacter) {
     attacker.name = chosenCharacter.name;
@@ -41,6 +47,8 @@ function chooseAttacker(chosenCharacter) {
     attacker.cp = chosenCharacter.cp;
     attackerSelected = true;
 }
+
+//choose a defender
 function chooseDefender(chosenCharacter) {
     defender.name = chosenCharacter.name;
     defender.id = chosenCharacter.id;
@@ -49,12 +57,21 @@ function chooseDefender(chosenCharacter) {
     defender.cp = chosenCharacter.cp;
     defenderSelected = true;
 }
+
+//update health based off of ap / cp / health
 function updateHealth() {
     attackerHealth = attacker.health - defender.ap;
     attacker.health = attackerHealth;
     defenderHealth = defender.health - attacker.ap;
     defender.health = defenderHealth;
-    attacker.ap += attacker.cp;
+    attacker.ap += 10;
+
+//update players ap after each attack attacker.ap += 10;
+function updateAttack() {
+    currentAp = attacker.ap
+}
+
+    //update health text
 
     if (attacker.id == 'frodo') {
         $("#frodo-health").text(attackerHealth);
@@ -71,12 +88,27 @@ function updateHealth() {
         $("#sam-health").text(defenderHealth);
     } else if (defender.id == 'merry') {
         $("#merry-health").text(defenderHealth);
-    } else if (defender.id == '[pippin]') {
+    } else if (defender.id == 'pippin') {
         $("#pippin-health").text(defenderHealth);
     };
+
+    //update attack text
+
+    if (attacker.id == 'frodo') {
+        $("#frodo-attack").text(currentap);
+    } else if (attacker.id == 'sam') {
+        $("#sam-attack").text(currentap);
+    } else if (attacker.id == 'merry') {
+        $("#merry-attack").text(currentap);
+    } else if (attacker.id == 'pippin') {
+        $("#pippin-attack").text(currentap);
+    };
 };
+
+//allow fighting if there is an attacker and a defender
 function fight() {
-    if (defender.health > 0) {
+    if (attacker.health < 1) {
+    } else if (defender.health > 0) {
         updateHealth();
     } else {
         if (defender.id == 'frodo') {
@@ -91,6 +123,8 @@ function fight() {
         defenderSelected = false;
     };
 };
+
+//move characters
 $(document).ready(function () {
     $(".fighters").on("click", function () {
         if ($(this).attr("id") == "frodo") {
@@ -106,13 +140,11 @@ $(document).ready(function () {
             $(this).appendTo("#your-character");
             $(this).hide();
             $(this).css("display", "block");
-            console.log("Character: " + selection.name);
             chooseAttacker(selection);
         } else if (!defenderSelected) {
             $(this).appendTo("#enemy-character");
             $(this).hide();
-            $(this).css("display", "block");
-            console.log("Enemy: " + selection.name);           
+            $(this).css("display", "block");         
             chooseDefender(selection);
         };
     });
@@ -120,3 +152,5 @@ $(document).ready(function () {
         fight();
     });
 });
+
+
