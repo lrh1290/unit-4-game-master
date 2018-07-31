@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 20px;
+}
+
+.img-fluid {
+    max-height: 150px;
+}
+
+
+#your-character {
+    width: 150px;
+    height: 150px;
+    clear: both;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.character-box {
+    text-align: center;
+    border: 3px solid black;
+    width: 210px;
+    height: 210px;
+    margin-bottom: 20px;
+    float: left;
+    margin-left: 10px;
+}
+
+.textbox {
+    text-align: center;
+}
+
+
+
