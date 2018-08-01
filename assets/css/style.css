@@ -14,6 +14,11 @@ body {
     height: 100%;
 }
 
+.explosion {
+    position: absolute;
+    display: none;
+}
+
 .textbox-name {
     text-align: center;
     color: white;
@@ -32,9 +37,10 @@ body {
 
 #animate {
     display: none;
+    margin-left: -30%;
     margin-top: 45%;
-    width: 50px;
-    height: 50px;
+    width: 15px;
+    height: 5px;
     position: absolute;
     background-color: red;
 }

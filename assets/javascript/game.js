@@ -107,6 +107,19 @@ function showButton() {
 
 function animate() {
     $("#animate").css('display','block');
+    setTimeout(function(){$("#animate").css('display','none');}, 4800);
+}
+
+function explosion() {
+    setTimeout(function(){$(".explosion").css('display','block');}, 4800);   
+}
+
+function unexplosion() {
+    setTimeout(function(){$(".explosion").css('display','none');}, 5100);   
+}
+
+function burry() {
+    $(".defender").css('display','none');   
 }
 
 function death() {
@@ -165,6 +178,8 @@ $(document).ready(function () {
     $(".btn").on("click", function() {
         fight();
         animate();
+        explosion();
+        unexplosion();
     });
 });
 
