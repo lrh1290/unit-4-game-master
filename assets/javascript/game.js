@@ -63,7 +63,7 @@ function updateHealth() {
     attacker.health = attackerHealth;
     defenderHealth = defender.health - attacker.ap;
     defender.health = defenderHealth;
-    attacker.ap += 10;
+    attacker.ap += attacker.ap;
 
     //update health text
 
@@ -99,6 +99,10 @@ function updateAttack() {
     } else if (attacker.id == 'pippin') {
         $("#pippin-attack").text(currentap);
     }
+}
+
+function showButton() {
+    $(".btn").css('display','block');
 }
 
 function death() {
@@ -151,6 +155,7 @@ $(document).ready(function () {
             $(this).hide();
             $(this).css("display", "block");         
             chooseDefender(selection);
+            showButton();
         };
     });
     $(".btn").on("click", function() {
