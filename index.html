@@ -9,15 +9,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ruslan+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+
+
 </head>
-
+<style>
+    body {
+    background-image: url("assets/images/stars.jpg");
+}
+</style>
 <body>
-
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="text-center">RPG!</h1>
+                <h1 class="text-center">GALACTIC CONQUEST!</h1>
                 <hr>
 
             </div>
@@ -29,8 +35,8 @@
 
                 <!-- Character boxes -->
                 <div class="fighters" id="frodo">
-                    <div class="textbox">Frodo</div>
-                    <img class="img-fluid" src="assets/images/frodo.jpg" alt="frodo"></img>
+                    <div class="textbox-name">Millennium Falcon</div>
+                    <img class="img-fluid" src="assets/images/falcon.jpg" alt="frodo"></img>
                     <div class="textbox">Health:
                     <br><span class="health" id="frodo-health">150</span>
                     <div>Attack:</div>
@@ -41,8 +47,8 @@
             </div>
             <div class="col-md-3">
                 <div class="fighters" id="merry">
-                    <div class="textbox">Merry</div>
-                    <img class="img-fluid" src="assets/images/merry.jpg" alt="merry"></img>
+                    <div class="textbox-name">TIE Fighter</div>
+                    <img class="img-fluid" src="assets/images/thai.jpg" alt="merry"></img>
                     <div class="textbox">Health:
                         <br><span class="health" id="merry-health">50</span>
                         <div>Attack:</div>
@@ -53,8 +59,8 @@
             </div>
             <div class="col-md-3">
                 <div class="fighters" id="pippin">
-                    <div class="textbox">Pippin</div>
-                    <img class="img-fluid" src="assets/images/pippin.jpg" alt="pippin"></img>
+                    <div class="textbox-name">X-Wing Starfighter</div>
+                    <img class="img-fluid" src="assets/images/xwing.jpg" alt="pippin"></img>
                     <div class="textbox">Health:
                         <br><span class="health" id="pippin-health">100</span>
                         <div>Attack:</div>
@@ -65,8 +71,8 @@
             </div>
             <div class="col-md-3">
                 <div class="fighters" id="sam">
-                    <div class="textbox">Sam</div>
-                    <img class="img-fluid" src="assets/images/sam.jpg" alt="sam"></img>
+                    <div class="textbox-name">Star Destroyer</div>
+                    <img class="img-fluid" src="assets/images/destroyer.jpg" alt="sam"></img>
                     <div class="textbox">Health:
                         <br><span class="health" id="sam-health">200</span>
                         <div>Attack:</div>
@@ -81,15 +87,34 @@
         <br>
         <div class="row">
             <div class="col-md-4">
-                <h3>ATTACKER</h3>
+                <h4>ATTACKER</h3>
                 <div id="your-character">
                 </div>
             </div>
             <div class="col-md-4">
-                <button class="btn btn-danger">Attack!</button>
+                <button class="btn btn-danger" onclick ="myMove()">FIRE!</button>
+                <div id ="animate-container">
+                        <div id ="animate"></div>
+                        </div>
+                        <script>
+                        function myMove() {
+                          var elem = document.getElementById("animate");   
+                          var pos = -1;
+                          var id = setInterval(frame, 0);
+                          function frame() {
+                            if (pos == 650) {
+                              clearInterval(id);
+                            } else {
+                              pos++; 
+                              elem.style.left = pos + 'px'; 
+                              elem.style.left = pos + 'px'; 
+                            }
+                          }
+                        }
+                </script>
             </div>
             <div class="col-md-4">
-                <h3>DEFENDER</h3>
+                <h4>DEFENDER</h3>
                 <div id="enemy-character"></div>
             </div>
         </div>

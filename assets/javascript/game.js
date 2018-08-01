@@ -105,6 +105,10 @@ function showButton() {
     $(".btn").css('display','block');
 }
 
+function animate() {
+    $("#animate").css('display','block');
+}
+
 function death() {
     if (attacker.health < 1) {
         alert("GAME OVER");
@@ -160,6 +164,7 @@ $(document).ready(function () {
     });
     $(".btn").on("click", function() {
         fight();
+        animate();
     });
 });
 
