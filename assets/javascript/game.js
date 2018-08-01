@@ -118,10 +118,6 @@ function unexplosion() {
     setTimeout(function(){$(".explosion").css('display','none');}, 5100);   
 }
 
-function burry() {
-    $(".defender").css('display','none');   
-}
-
 function death() {
     if (attacker.health < 1) {
         alert("GAME OVER");
