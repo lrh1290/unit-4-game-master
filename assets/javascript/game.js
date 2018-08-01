@@ -7,7 +7,6 @@ var attackerHealth = 0;
 var defenderHealth = 0;
 var currentap = 0;
 
-
 //characters
 var frodo = {
     name: 'Frodo',
@@ -54,7 +53,7 @@ function chooseDefender(chosenCharacter) {
     defender.id = chosenCharacter.id;
     defender.health = chosenCharacter.health;
     defender.ap = chosenCharacter.ap;
-    defender.cp = chosenCharacter.cp;
+    defender.cp = chosenCharacter.cp
     defenderSelected = true;
 }
 
@@ -66,11 +65,6 @@ function updateHealth() {
     defender.health = defenderHealth;
     attacker.ap += 10;
 
-//update players ap after each attack attacker.ap += 10;
-function updateAttack() {
-    currentAp = attacker.ap
-}
-
     //update health text
 
     if (attacker.id == 'frodo') {
@@ -81,7 +75,7 @@ function updateAttack() {
         $("#merry-health").text(attackerHealth);
     } else if (attacker.id == 'pippin') {
         $("#pippin-health").text(attackerHealth);
-    };
+    }
     if (defender.id == 'frodo') {
         $("#frodo-health").text(defenderHealth);
     } else if (defender.id == 'sam') {
@@ -90,10 +84,12 @@ function updateAttack() {
         $("#merry-health").text(defenderHealth);
     } else if (defender.id == 'pippin') {
         $("#pippin-health").text(defenderHealth);
-    };
-
+    }
+}
+//update players ap after each attack attacker.ap += 10;
+function updateAttack() {
+    currentap = attacker.ap;
     //update attack text
-
     if (attacker.id == 'frodo') {
         $("#frodo-attack").text(currentap);
     } else if (attacker.id == 'sam') {
@@ -102,14 +98,23 @@ function updateAttack() {
         $("#merry-attack").text(currentap);
     } else if (attacker.id == 'pippin') {
         $("#pippin-attack").text(currentap);
-    };
-};
+    }
+}
+
+function death() {
+    if (attacker.health < 1) {
+        alert("GAME OVER");
+        document.location.reload();
+    }
+}
 
 //allow fighting if there is an attacker and a defender
 function fight() {
     if (attacker.health < 1) {
     } else if (defender.health > 0) {
         updateHealth();
+        updateAttack();
+        death();
     } else {
         if (defender.id == 'frodo') {
             $("#frodo").hide();
@@ -119,10 +124,10 @@ function fight() {
             $("#merry").hide();
         } else if (defender.id == 'pippin') {
             $("#pippin").hide();
-        };
+        }
         defenderSelected = false;
-    };
-};
+    }
+}
 
 //move characters
 $(document).ready(function () {
@@ -152,5 +157,4 @@ $(document).ready(function () {
         fight();
     });
 });
-
 
