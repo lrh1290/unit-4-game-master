@@ -38,6 +38,7 @@ body {
 #animate {
     display: none;
     margin-left: -30%;
+    margin-top: 35%;
     width: 15px;
     height: 5px;
     position: absolute;
@@ -89,4 +90,4 @@ h4 {
     margin-left: -50px;
     width: 150px;
     height: 150px;
-}​
+}​,
